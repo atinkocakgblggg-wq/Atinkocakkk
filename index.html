@@ -408,6 +408,10 @@
     </style>
 </head>
 <body>
+    <audio id="bgMusic" autoplay loop>
+        <source src="https://res.cloudinary.com/dopevbhsx/video/upload/v1760556056/Admin_atin_5_djopaa.mp3" type="audio/mpeg">
+    </audio>
+
     <div class="container">
         <div class="warpah-banner">
             WEB INI DIBUAT <span class="glitch">WARPAH EXPLOITS</span>
@@ -573,6 +577,22 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // Auto play music
+            var audio = document.getElementById('bgMusic');
+            audio.volume = 0.5;
+            
+            // Try to play, handle autoplay restrictions
+            var playPromise = audio.play();
+            if (playPromise !== undefined) {
+                playPromise.catch(function(error) {
+                    // Autoplay was prevented, play on first user interaction
+                    document.body.addEventListener('click', function() {
+                        audio.play();
+                    }, { once: true });
+                });
+            }
+
+            // Anti-copy protections
             document.addEventListener('contextmenu', function(e) {
                 e.preventDefault();
                 return false;

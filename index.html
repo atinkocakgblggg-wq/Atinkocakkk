@@ -3,202 +3,430 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pelanggaran UU ITE - Penyebaran Data Personal</title>
+    <title>GARFIELD EXPOSED - Data Breach</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-            color: #333;
+            font-family: 'Courier New', monospace;
+            background: #0a0a0a;
+            color: #fff;
             min-height: 100vh;
-            padding: 20px;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        .glitch {
+            animation: glitch 1s infinite;
+        }
+
+        @keyframes glitch {
+            0% { transform: translate(0); }
+            20% { transform: translate(-2px, 2px); }
+            40% { transform: translate(-2px, -2px); }
+            60% { transform: translate(2px, 2px); }
+            80% { transform: translate(2px, -2px); }
+            100% { transform: translate(0); }
         }
 
         .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            overflow: hidden;
+            max-width: 100%;
+            margin: 0;
+            background: #0a0a0a;
+        }
+
+        .warpah-banner {
+            background: #000;
+            border-top: 3px solid #00ff41;
+            border-bottom: 3px solid #00ff41;
+            padding: 20px;
+            text-align: center;
+            font-size: 1.8rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+            animation: pulse 2s infinite;
+        }
+
+        .warpah-banner span {
+            color: #00ff41;
+            text-shadow: 0 0 10px #00ff41, 0 0 20px #00ff41, 0 0 30px #00ff41;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
         }
 
         .header {
-            background: linear-gradient(135deg, #c31432 0%, #e74c3c 100%);
-            color: white;
-            padding: 60px 30px;
+            background: #000;
+            position: relative;
+            padding: 80px 30px;
             text-align: center;
+            border-bottom: 5px solid #ff0000;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(255, 0, 0, 0.1) 0px,
+                transparent 2px,
+                transparent 4px,
+                rgba(255, 0, 0, 0.1) 6px
+            );
+            pointer-events: none;
         }
 
         .header h1 {
-            font-size: 4rem;
+            font-size: 5rem;
             font-weight: bold;
             text-transform: uppercase;
-            letter-spacing: 3px;
+            letter-spacing: 15px;
             margin-bottom: 20px;
-            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+            color: #ff0000;
+            text-shadow: 
+                0 0 10px #ff0000,
+                0 0 20px #ff0000,
+                0 0 40px #ff0000,
+                0 0 80px #ff0000;
+            position: relative;
+            z-index: 1;
         }
 
         .header .subtitle {
-            font-size: 1.3rem;
+            font-size: 1.1rem;
             margin-top: 10px;
-            opacity: 0.95;
+            color: #fff;
+            letter-spacing: 3px;
+            text-transform: uppercase;
         }
 
         .content {
             padding: 50px 30px;
+            background: #0a0a0a;
+        }
+
+        .threat-warning {
+            background: #1a0000;
+            border: 3px solid #ff0000;
+            padding: 30px;
+            margin: 40px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .threat-warning::before {
+            content: '⚠';
+            position: absolute;
+            font-size: 200px;
+            opacity: 0.05;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .threat-warning h2 {
+            color: #ff0000;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-shadow: 0 0 10px #ff0000;
+        }
+
+        .threat-warning p {
+            color: #fff;
+            line-height: 1.8;
+            font-size: 1.2rem;
+            font-weight: bold;
+            letter-spacing: 1px;
         }
 
         .warning-box {
-            background: #fff3cd;
-            border-left: 5px solid #ffc107;
-            padding: 20px;
-            margin-bottom: 40px;
-            border-radius: 5px;
+            background: #1a1a00;
+            border-left: 5px solid #ffff00;
+            border-right: 5px solid #ffff00;
+            padding: 30px;
+            margin: 40px 20px;
+            box-shadow: 0 0 20px rgba(255, 255, 0, 0.3);
         }
 
         .warning-box h2 {
-            color: #856404;
-            margin-bottom: 10px;
+            color: #ffff00;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
         .warning-box p {
-            color: #856404;
-            line-height: 1.6;
+            color: #fff;
+            line-height: 1.8;
+            font-size: 1rem;
         }
 
         .evidence-section {
-            margin: 40px 0;
+            margin: 40px 20px;
         }
 
         .evidence-item {
             margin-bottom: 50px;
-            border: 2px solid #e0e0e0;
-            border-radius: 15px;
+            border: 3px solid #333;
+            background: #000;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
+            box-shadow: 0 0 30px rgba(255, 0, 0, 0.3);
+            transition: all 0.3s ease;
         }
 
         .evidence-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            border-color: #ff0000;
+            box-shadow: 0 0 50px rgba(255, 0, 0, 0.6);
+            transform: scale(1.02);
         }
 
         .evidence-header {
-            background: #e74c3c;
-            color: white;
-            padding: 20px;
+            background: #ff0000;
+            color: #000;
+            padding: 25px;
             font-size: 1.3rem;
             font-weight: bold;
             text-align: center;
+            letter-spacing: 2px;
+            text-transform: uppercase;
         }
 
         .evidence-image {
             width: 100%;
             height: auto;
             display: block;
+            border-top: 3px solid #333;
+            pointer-events: none;
+            -webkit-user-drag: none;
+        }
+
+        .personal-info-section {
+            background: #0d0d0d;
+            padding: 40px 30px;
+            margin: 50px 20px;
+            border: 3px solid #ff0000;
+            box-shadow: 0 0 40px rgba(255, 0, 0, 0.4);
+        }
+
+        .personal-info-section h2 {
+            color: #ff0000;
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-shadow: 0 0 15px #ff0000;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .info-item {
+            background: #1a1a1a;
+            padding: 20px;
+            border-left: 4px solid #ff0000;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .info-item:hover {
+            background: #222;
+            border-left-width: 8px;
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
+        }
+
+        .info-item .label {
+            color: #ff6666;
+            font-size: 0.9rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        .info-item .value {
+            color: #fff;
+            font-size: 1.1rem;
+            font-weight: bold;
+            letter-spacing: 1px;
         }
 
         .uu-section {
-            background: #f8f9fa;
-            padding: 30px;
-            border-radius: 15px;
-            margin: 40px 0;
+            background: #0d0d0d;
+            padding: 40px 30px;
+            margin: 40px 20px;
+            border: 2px solid #333;
         }
 
         .uu-section h2 {
-            color: #c31432;
-            margin-bottom: 20px;
+            color: #ff0000;
+            margin-bottom: 30px;
             font-size: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-shadow: 0 0 10px #ff0000;
         }
 
         .uu-item {
-            background: white;
-            padding: 20px;
-            margin: 15px 0;
-            border-left: 4px solid #c31432;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            background: #1a1a1a;
+            padding: 25px;
+            margin: 20px 0;
+            border-left: 5px solid #ff0000;
+            border-right: 5px solid #ff0000;
+            transition: all 0.3s ease;
+        }
+
+        .uu-item:hover {
+            background: #222;
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
         }
 
         .uu-item h3 {
-            color: #c31432;
-            margin-bottom: 10px;
+            color: #ff6666;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+            letter-spacing: 1px;
         }
 
         .uu-item p {
             line-height: 1.8;
-            color: #555;
+            color: #ccc;
+            font-size: 1rem;
         }
 
         .tiktok-link {
             text-align: center;
-            padding: 40px;
-            background: linear-gradient(135deg, #000000 0%, #434343 100%);
-            color: white;
+            padding: 50px 20px;
+            background: #000;
+            border-top: 3px solid #ff0000;
+            border-bottom: 3px solid #ff0000;
         }
 
         .tiktok-link h2 {
-            margin-bottom: 20px;
+            margin-bottom: 30px;
             font-size: 2rem;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 3px;
         }
 
         .tiktok-link a {
             display: inline-block;
-            background: #ff0050;
-            color: white;
-            padding: 15px 40px;
+            background: #ff0000;
+            color: #fff;
+            padding: 20px 50px;
             text-decoration: none;
-            border-radius: 50px;
-            font-size: 1.2rem;
+            font-size: 1.5rem;
             font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
             transition: all 0.3s ease;
+            border: 3px solid #fff;
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
         }
 
         .tiktok-link a:hover {
-            background: #cc0040;
-            transform: scale(1.05);
+            background: #000;
+            color: #ff0000;
+            border-color: #ff0000;
+            box-shadow: 0 0 40px rgba(255, 0, 0, 0.8);
+            transform: scale(1.1);
         }
 
         .footer {
-            background: #2c3e50;
-            color: white;
+            background: #000;
+            color: #666;
             text-align: center;
-            padding: 30px;
+            padding: 40px 20px;
+            border-top: 3px solid #333;
+        }
+
+        .footer p {
+            margin: 10px 0;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
         }
 
         @media (max-width: 768px) {
             .header h1 {
-                font-size: 2.5rem;
+                font-size: 3rem;
+                letter-spacing: 5px;
             }
 
             .header .subtitle {
-                font-size: 1rem;
+                font-size: 0.9rem;
             }
 
             .content {
-                padding: 30px 20px;
+                padding: 30px 15px;
+            }
+
+            .warpah-banner {
+                font-size: 1.2rem;
+            }
+
+            .threat-warning h2 {
+                font-size: 1.5rem;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
+        <div class="warpah-banner">
+            WEB INI DIBUAT <span class="glitch">WARPAH EXPLOITS</span>
+        </div>
+
         <div class="header">
-            <h1>GARFIELD</h1>
-            <div class="subtitle">Penyebaran Data Personal Melanggar UU ITE</div>
+            <h1 class="glitch">GARFIELD</h1>
+            <div class="subtitle">⚠ DATA BREACH & PRIVACY VIOLATION ⚠</div>
         </div>
 
         <div class="content">
+            <div class="threat-warning">
+                <h2>[ ULTIMATUM ]</h2>
+                <p>JIKA TIDAK ADA PERMINTAAN MAAF ATAUPUN KLARIFIKASI DARI PIHAK YANG BERSANGKUTAN<br>JANGAN BERHARAP MAP ANDA TENANG</p>
+            </div>
+
             <div class="warning-box">
-                <h2>⚠️ PERINGATAN SERIUS</h2>
-                <p>Dokumen ini berisi bukti penyebaran data personal dan informasi pribadi yang melanggar Undang-Undang Informasi dan Transaksi Elektronik (UU ITE). Tindakan ini merupakan pelanggaran hukum yang dapat dikenakan sanksi pidana.</p>
+                <h2>⚠️ PERINGATAN HUKUM</h2>
+                <p>Halaman ini berisi dokumentasi pelanggaran serius terhadap Undang-Undang Informasi dan Transaksi Elektronik (UU ITE) dan UU Pelindungan Data Pribadi. Penyebaran data personal tanpa izin merupakan tindakan kriminal yang dapat diproses hukum dengan sanksi pidana dan denda maksimal Rp 750 juta.</p>
             </div>
 
             <div class="evidence-section">
@@ -206,26 +434,85 @@
                     <div class="evidence-header">
                         BUKTI ADMIN ATIN SEBAR DATA PERSONAL
                     </div>
-                    <img src="https://res.cloudinary.com/dopevbhsx/image/upload/v1760552408/WhatsApp_Image_2025-10-16_at_01.12.30_yqfn0i.jpg" alt="Bukti Admin Atin Sebar Data Personal" class="evidence-image">
+                    <img src="https://res.cloudinary.com/dopevbhsx/image/upload/v1760552408/WhatsApp_Image_2025-10-16_at_01.12.30_yqfn0i.jpg" alt="Bukti" class="evidence-image">
+                </div>
+
+                <div class="personal-info-section">
+                    <h2>[ IDENTITAS LENGKAP PELAKU ]</h2>
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <span class="label">NAMA:</span>
+                            <span class="value">GARFIELD / RCKUSNADIII</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="label">USIA:</span>
+                            <span class="value">22-23 TAHUN</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="label">KOTA ASAL:</span>
+                            <span class="value">BANDUNG, JAWA BARAT</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="label">KOTA SEKARANG:</span>
+                            <span class="value">GARUT, JAWA BARAT</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="label">PENDIDIKAN SMP:</span>
+                            <span class="value">SMP DAYA SUSILA</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="label">PENDIDIKAN SMA:</span>
+                            <span class="value">SMAN 1 GARUT</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="label">JURUSAN:</span>
+                            <span class="value">TEKKOM18 (TEKNIK KOMPUTER 2018)</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="label">ANGKATAN:</span>
+                            <span class="value">2018-2022</span>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="evidence-item">
                     <div class="evidence-header">
-                        MUKA GARFIELD ALIAS RCKUSNADIII YANG SEBAR DATA PLAYER
+                        WAJAH PELAKU - GARFIELD ALIAS RCKUSNADIII #1
                     </div>
-                    <img src="https://res.cloudinary.com/dopevbhsx/image/upload/v1760552436/53d06771-3d79-4b09-a279-4a221766bbd3_uzrxsd.jpg" alt="Muka Garfield 1" class="evidence-image">
+                    <img src="https://res.cloudinary.com/dopevbhsx/image/upload/v1760552436/53d06771-3d79-4b09-a279-4a221766bbd3_uzrxsd.jpg" alt="Pelaku 1" class="evidence-image">
                 </div>
 
                 <div class="evidence-item">
                     <div class="evidence-header">
-                        MUKA GARFIELD ALIAS RCKUSNADIII YANG SEBAR DATA PLAYER
+                        WAJAH PELAKU - GARFIELD ALIAS RCKUSNADIII #2
                     </div>
-                    <img src="https://res.cloudinary.com/dopevbhsx/image/upload/v1760552427/2fc73d0f-5b5c-41dd-a852-529b4c956bde_qlxjgv.jpg" alt="Muka Garfield 2" class="evidence-image">
+                    <img src="https://res.cloudinary.com/dopevbhsx/image/upload/v1760552427/2fc73d0f-5b5c-41dd-a852-529b4c956bde_qlxjgv.jpg" alt="Pelaku 2" class="evidence-image">
+                </div>
+
+                <div class="evidence-item">
+                    <div class="evidence-header">
+                        BUKTI TAMBAHAN - AKTIVITAS PELAKU #1
+                    </div>
+                    <img src="https://res.cloudinary.com/dopevbhsx/image/upload/v1760554701/f833df9f-a498-468f-8059-451456f9f495_o3vnln.jpg" alt="Bukti 1" class="evidence-image">
+                </div>
+
+                <div class="evidence-item">
+                    <div class="evidence-header">
+                        BUKTI TAMBAHAN - AKTIVITAS PELAKU #2
+                    </div>
+                    <img src="https://res.cloudinary.com/dopevbhsx/image/upload/v1760554709/4bca1928-23b0-49d1-96da-f36edfa14a33_r5obli.jpg" alt="Bukti 2" class="evidence-image">
+                </div>
+
+                <div class="evidence-item">
+                    <div class="evidence-header">
+                        BUKTI TAMBAHAN - AKTIVITAS PELAKU #3
+                    </div>
+                    <img src="https://res.cloudinary.com/dopevbhsx/image/upload/v1760554720/e9be0c66-d753-4f7b-afda-f3dbd12fbad2_ivd0ix.jpg" alt="Bukti 3" class="evidence-image">
                 </div>
             </div>
 
             <div class="uu-section">
-                <h2>📋 Dasar Hukum UU ITE</h2>
+                <h2>📋 DASAR HUKUM UU ITE</h2>
                 
                 <div class="uu-item">
                     <h3>Pasal 26 UU ITE</h3>
@@ -250,14 +537,53 @@
         </div>
 
         <div class="tiktok-link">
-            <h2>Akun TikTok Pelaku</h2>
-            <a href="https://www.tiktok.com/@rckusnadiii?_t=ZS-90Zp0vSv76g&_r=1" target="_blank">@rckusnadiii</a>
+            <h2>AKUN TIKTOK PELAKU</h2>
+            <a href="https://www.tiktok.com/@rckusnadiii?_t=ZS-90Zp0vSv76g&_r=1" target="_blank">@RCKUSNADIII</a>
         </div>
 
         <div class="footer">
             <p>Dokumen ini dibuat sebagai bukti pelanggaran UU ITE dan UU Pelindungan Data Pribadi.</p>
             <p style="margin-top: 10px;">Penyebaran data pribadi tanpa izin adalah tindakan kriminal yang dapat diproses secara hukum.</p>
+            <p style="margin-top: 20px; color: #00ff41;">© WARPAH EXPLOITS - NO MERCY FOR DATA LEAKERS</p>
         </div>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.addEventListener('contextmenu', function(e) {
+                e.preventDefault();
+                return false;
+            });
+
+            document.addEventListener('keydown', function(e) {
+                if (e.ctrlKey && (e.key === 'u' || e.key === 'U' || 
+                    e.key === 's' || e.key === 'S' || 
+                    e.key === 'c' || e.key === 'C' ||
+                    e.key === 'a' || e.key === 'A')) {
+                    e.preventDefault();
+                    return false;
+                }
+                if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && e.key === 'I')) {
+                    e.preventDefault();
+                    return false;
+                }
+            });
+
+            document.addEventListener('copy', function(e) {
+                e.preventDefault();
+                return false;
+            });
+
+            document.addEventListener('cut', function(e) {
+                e.preventDefault();
+                return false;
+            });
+
+            document.addEventListener('selectstart', function(e) {
+                e.preventDefault();
+                return false;
+            });
+        });
+    </script>
 </body>
 </html>
